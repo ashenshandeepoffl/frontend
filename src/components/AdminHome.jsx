@@ -157,14 +157,7 @@ const Admin = () => {
           >
             Model
           </button>
-          <button
-            onClick={() => setActiveTab('EmotionsSettings')}
-            className={`px-4 py-2 rounded-full transition-colors ${
-              activeTab === 'EmotionsSettings' ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-600'
-            }`}
-          >
-            Emotions Settings
-          </button>
+          
         </div>
       </div>
 

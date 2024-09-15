@@ -69,6 +69,7 @@ const Home = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <h1 className="text-xl font-semibold">Smart Home System</h1>
           <div>
+            <Link to="/home" className="text-gray-600 mx-4">Home</Link>
             <Link to="/profile" className="text-gray-600 mx-4">Profile</Link>
             <Link to="/settings" className="text-gray-600 mx-4">Settings</Link>
             <Link to="/emotions-capture" className="text-gray-600 mx-4">Emotions Capture</Link>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import axios from 'axios'; // Import axios for form submission
 import { useSpring, animated } from '@react-spring/web';
 
 const ContactUs = () => {
-  // Form state
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,6 +43,12 @@ const ContactUs = () => {
     delay: 300,
   });
 
+  // Function to handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Navbar */}
@@ -50,9 +56,13 @@ const ContactUs = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-xl font-semibold">Smart Home System</Link>
           <div>
-            <Link to="/home" className="text-gray-600 mx-4">Home</Link>
+          <Link to="/home" className="text-gray-600 mx-4">Home</Link>
+            <Link to="/profile" className="text-gray-600 mx-4">Profile</Link>
+            <Link to="/settings" className="text-gray-600 mx-4">Settings</Link>
+            <Link to="/emotions-capture" className="text-gray-600 mx-4">Emotions Capture</Link>
             <Link to="/about-us" className="text-gray-600 mx-4">About Us</Link>
             <Link to="/contact-us" className="text-gray-600 mx-4">Contact Us</Link>
+            <button onClick={handleLogout} className="text-red-500 mx-4">Logout</button>
           </div>
         </div>
       </nav>
@@ -124,10 +134,10 @@ const ContactUs = () => {
               <strong>Email:</strong> contact@smarthome.com
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>Phone:</strong> +1 (123) 456-7890
+              <strong>Phone:</strong> +94 77 401 6146
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>Address:</strong> 123 Smart Home Street, Tech City, USA
+              <strong>Address:</strong> 180/A Horape Ragama, Sri Lanka
             </p>
             <p className="text-gray-700 mb-4">
               <strong>Business Hours:</strong> Monday to Friday, 9 AM - 6 PM

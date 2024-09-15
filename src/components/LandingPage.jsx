@@ -13,7 +13,7 @@ const LandingPage = () => {
             <Link to="/features" className="text-gray-600 mx-4">Features</Link>
             <Link to="/about" className="text-gray-600 mx-4">About</Link>
             <Link to="/login" className="text-gray-600 mx-4">Login</Link>
-            <Link to="/register" className="bg-blue-500 text-white px-4 py-2 rounded-md">Register</Link>
+            <Link to="/register" className="text-gray-600 mx-4">Register</Link>
           </div>
         </div>
       </nav>

@@ -1,21 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSpring, animated } from '@react-spring/web';
 
 const AboutUs = () => {
-  // Animation for Hero Text
+  const navigate = useNavigate();
   const heroAnimation = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     delay: 300,
-  });
+});
 
-  // Animation for the Mission Statement
-  const missionAnimation = useSpring({
-    transform: 'translateY(0px)',
-    from: { transform: 'translateY(20px)' },
-    delay: 500,
-  });
+// Animation for the Mission Statement
+const missionAnimation = useSpring({
+  transform: 'translateY(0px)',
+  from: { transform: 'translateY(20px)' },
+  delay: 500,
+});
+
+// Function to handle logout
+const handleLogout = () => {
+  localStorage.removeItem('access_token');
+  navigate('/');
+};
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -25,8 +31,12 @@ const AboutUs = () => {
           <Link to="/" className="text-xl font-semibold">Smart Home System</Link>
           <div>
             <Link to="/home" className="text-gray-600 mx-4">Home</Link>
+            <Link to="/profile" className="text-gray-600 mx-4">Profile</Link>
+            <Link to="/settings" className="text-gray-600 mx-4">Settings</Link>
+            <Link to="/emotions-capture" className="text-gray-600 mx-4">Emotions Capture</Link>
             <Link to="/about-us" className="text-gray-600 mx-4">About Us</Link>
             <Link to="/contact-us" className="text-gray-600 mx-4">Contact Us</Link>
+            <button onClick={handleLogout} className="text-red-500 mx-4">Logout</button>
           </div>
         </div>
       </nav>

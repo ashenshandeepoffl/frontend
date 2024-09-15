@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 
 const Settings = () => {
+  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(false);
   const [fontSize, setFontSize] = useState('text-base');
 
@@ -27,17 +28,27 @@ const Settings = () => {
     localStorage.setItem('fontSize', size);
   };
 
+  // Function to handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    navigate('/');
+  };
+
+
   return (
     <div className={`${fontSize} min-h-screen bg-gray-100 dark:bg-gray-900`}>
       {/* Navbar */}
-      <nav className="bg-white dark:bg-gray-800 shadow-md">
+      <nav className="bg-white shadow-md">
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold dark:text-white">Settings</h1>
+          <h1 className="text-xl font-semibold">Smart Home System</h1>
           <div>
-            <Link to="/profile" className="text-gray-600 dark:text-gray-300 mx-4">Profile</Link>
-            <Link to="/home" className="text-gray-600 dark:text-gray-300 mx-4">Home</Link>
-            <Link to="/settings" className="text-gray-600 dark:text-gray-300 mx-4">Settings</Link>
-            <button className="text-red-500 mx-4">Logout</button>
+            <Link to="/home" className="text-gray-600 mx-4">Home</Link>
+            <Link to="/profile" className="text-gray-600 mx-4">Profile</Link>
+            <Link to="/settings" className="text-gray-600 mx-4">Settings</Link>
+            <Link to="/emotions-capture" className="text-gray-600 mx-4">Emotions Capture</Link>
+            <Link to="/about-us" className="text-gray-600 mx-4">About Us</Link>
+            <Link to="/contact-us" className="text-gray-600 mx-4">Contact Us</Link>
+            <button onClick={handleLogout} className="text-red-500 mx-4">Logout</button>
           </div>
         </div>
       </nav>

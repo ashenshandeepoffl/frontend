@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSpring, animated } from '@react-spring/web';
 
@@ -55,8 +55,31 @@ const Profile = () => {
   const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 200 });
   const slideIn = useSpring({ transform: 'translateY(0px)', from: { transform: 'translateY(20px)' }, delay: 300 });
 
+   // Function to handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    navigate('/');
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div className="min-h-screen bg-gray-100">
+      {/* Navbar */}
+      <nav className="bg-white shadow-md">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="text-xl font-semibold">Smart Home System</h1>
+          <div>
+            <Link to="/home" className="text-gray-600 mx-4">Home</Link>
+            <Link to="/profile" className="text-gray-600 mx-4">Profile</Link>
+            <Link to="/settings" className="text-gray-600 mx-4">Settings</Link>
+            <Link to="/emotions-capture" className="text-gray-600 mx-4">Emotions Capture</Link>
+            <Link to="/about-us" className="text-gray-600 mx-4">About Us</Link>
+            <Link to="/contact-us" className="text-gray-600 mx-4">Contact Us</Link>
+            <button onClick={handleLogout} className="text-red-500 mx-4">Logout</button>
+          </div>
+        </div>
+      </nav>
+
+      <div className="min-h-screen bg-gray-100 flex justify-center items-center">
       <div className="bg-white shadow-lg rounded-lg p-10 w-full max-w-3xl text-center">
         {/* Avatar with animation */}
         <animated.div style={fadeIn}>
@@ -129,6 +152,8 @@ const Profile = () => {
         )}
       </div>
     </div>
+    </div>
+    
   );
 };
 

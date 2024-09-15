@@ -38,7 +38,10 @@ const Login = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="text-xl font-semibold">Smart Home System</Link>
           <div>
-            <Link to="/" className="text-gray-600 mx-4">Landing Page</Link>
+          <Link to="/" className="text-gray-600 mx-4">Home</Link>
+            <Link to="/features" className="text-gray-600 mx-4">Features</Link>
+            <Link to="/about" className="text-gray-600 mx-4">About</Link>
+            <Link to="/login" className="bg-blue-500 text-white px-4 py-2 rounded-md">Login</Link>
             <Link to="/register" className="text-gray-600 mx-4">Register</Link>
           </div>
         </div>
